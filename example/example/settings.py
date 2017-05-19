@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'merge_model_instances',
+
+    'app',
 ]
 
 MIDDLEWARE = [
@@ -126,7 +128,7 @@ STATIC_URL = '/static/'
 
 MERGE_MODEL_INSTANCES = {
         "MERGEABLE_MODELS": [{
-            "MODEL_NAME": "accounts.ModelA",
+            "MODEL_NAME": "ModelA",
             "ORDER_ARGUMENT": "id"
             }],
         }
