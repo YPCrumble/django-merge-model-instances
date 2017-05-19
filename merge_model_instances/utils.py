@@ -7,7 +7,13 @@ from django.db.models.fields.related import ManyToManyField
 
 @transaction.atomic()
 def merge_model_objects(primary_object, alias_objects=None, keep_old=False):
-    """Merge several model instances into one, the `primary_object`.
+    """
+    Inspiration:
+     - https://gist.github.com/cloudrave/7c395aa3634b2f2a0cb4
+     - https://gist.github.com/edelvalle/01886b6f79ba0c4dce66
+     - https://djangosnippets.org/snippets/382/
+
+    Merge several model instances into one, the `primary_object`.
     Use this function to merge model objects and migrate all of the related
     fields from the alias objects the primary object.
     Usage:
@@ -15,7 +21,6 @@ def merge_model_objects(primary_object, alias_objects=None, keep_old=False):
         primary_user = User.objects.get(email='good@example.com')
         duplicate_user = User.objects.get(email='good+duplicate@example.com')
         merge(primary_user, duplicate_user)
-    Based on: https://djangosnippets.org/snippets/382/
     """
     if not alias_objects:
         alias_objects = []
